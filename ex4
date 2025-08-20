@@ -1,0 +1,70 @@
+package mypackage;
+
+import java.util.Scanner;
+
+public class Car {
+
+    String model;
+    String color;
+    boolean isRunning;
+
+  
+    public Car(String model, String color) {
+        this.model = model;
+        this.color = color;
+        this.isRunning = false;
+    }
+
+ 
+    public void start() {
+        if (!isRunning) {
+            isRunning = true;
+            if (model == null || model.trim().isEmpty()) {
+                System.out.println(color + " car (Model not shown) is now started.");
+            } else {
+                System.out.println(color + " " + model + " is now started.");
+            }
+        } else {
+            if (model == null || model.trim().isEmpty()) {
+                System.out.println("Car (Model not shown) is already running.");
+            } else {
+                System.out.println(model + " is already running.");
+            }
+        }
+    }
+    public void stop() {
+        if (isRunning) {
+            isRunning = false;
+            if (model == null || model.trim().isEmpty()) {
+                System.out.println(color + " car (Model not shown) has been stopped.");
+            } else {
+                System.out.println(color + " " + model + " has been stopped.");
+            }
+        } else {
+            if (model == null || model.trim().isEmpty()) {
+                System.out.println("Car (Model not shown) is already stopped.");
+            } else {
+                System.out.println(model + " is already stopped.");
+            }
+        }
+    }
+
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter car model (press Enter to skip): ");
+        String model = scanner.nextLine();
+
+        System.out.print("Enter car color: ");
+        String color = scanner.nextLine();
+
+        Car myCar = new Car(model, color);
+
+   
+        myCar.start();
+        myCar.stop();
+
+     
+        scanner.close();
+    }
+}
